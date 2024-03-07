@@ -1,4 +1,4 @@
-# EXPERIMENT-NO--05-Distance measurement using Ultrasonic sensor
+# EXPERIMENT-NO--04-Distance measurement using Ultrasonic sensor
 
 ## AIM: 
 To interface an ultrasonic pair and measure the distance in centimeters , calculate the error
@@ -37,7 +37,7 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 ### FIGURE 01 CIRCUIT OF INTERFACING ULTRASONIC SENSOR 
 
 
-![image](https://user-images.githubusercontent.com/36288975/166430594-5adb4ca9-5a42-4781-a7e6-7236b3766a85.png)
+![Screenshot 2024-03-07 110718](https://github.com/suganjoker/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/105915942/da7f3d0c-b2e8-4685-a174-5d74b4ad0ec9)
 
 
 
@@ -56,28 +56,79 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 ### PROGRAM 
 
+NAME : SUGAVARATHAN L
+REG NO : 212221220051
+YEAR : 3 YEAR
+DEPARTMENT : INFORMATION TECHNOLOGY
 
+const int trigpin=10;
+const int echopin=9;
+int red=7;
+int green=6;
+long duration;
+float distance;
+void setup()
+{
+  pinMode(trigpin, OUTPUT);
+  pinMode(echopin, INPUT);
+  pinMode(red, OUTPUT);
+  pinMode(green, OUTPUT);
+  Serial.begin(9600);
+   
+}
 
-
+void loop()
+{
+  digitalWrite(trigpin,LOW);
+  delay(20);
+  digitalWrite(trigpin,HIGH);
+  delay(20);
+  digitalWrite(trigpin,LOW);
+  delay(20);
+  
+  duration=pulseIn(echopin,HIGH);
+  distance=duration*0.034/2;
+  Serial.print(distance);
+  Serial.println("cms");
+  if(distance>5)
+  {
+    digitalWrite(red,HIGH);
+    delay(200);
+    digitalWrite(red,LOW);
+    delay(200);
+    
+  }
+  else
+  {
+    digitalWrite(green,HIGH);
+    delay(200);
+    digitalWrite(green,LOW);
+    delay(200);
+  }
+  
+  
+  
+}
 
 
 ### Distance vs measurement table 
 
 			
  
-			
-			
-			
-
-![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
+			![Screenshot 2024-03-07 110641](https://github.com/suganjoker/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/105915942/11d52945-a5ba-45fb-a829-c55e890b24c8)
 
 			
 			
+
+![Screenshot 2024-03-07 110654](https://github.com/suganjoker/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/105915942/63e2e795-a1d3-4025-a318-ea80a0ceffae)
+
 			
 			
 			
-			Average error = sum/ number of readings 
- 
+			
+			
+			
+![Screenshot 2024-03-07 110634](https://github.com/suganjoker/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/105915942/b18caa54-fb21-4ca6-aaa8-3fce8a765aff)
 
 
 
@@ -90,4 +141,5 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 
 
- 
+ ![Screenshot 2024-03-07 110739](https://github.com/suganjoker/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/105915942/b9e207df-fbec-4742-948c-183abe8dbee4)
+
